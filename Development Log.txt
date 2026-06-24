@@ -1,0 +1,177 @@
+# Heroes of Might and Magic (Console Edition)
+
+## Technical Progress Report
+
+**Date:** 24 June 2026
+
+### Overview
+
+This document summarizes the functionality implemented during the initial development phase of the project.
+
+---
+
+## Unit Model
+
+Implemented a `Unit` class representing a combat unit.
+
+### Properties
+
+| Property    | Type   | Description                      |
+| ----------- | ------ | -------------------------------- |
+| Name        | string | Unit name                        |
+| Count       | int    | Number of creatures in the stack |
+| Attack      | int    | Attack attribute                 |
+| Defense     | int    | Defense attribute                |
+| MinDamage   | int    | Minimum damage value             |
+| MaxDamage   | int    | Maximum damage value             |
+| Health      | int    | Health per creature              |
+| TotalHealth | int    | Total stack health               |
+
+### Constructor
+
+All unit parameters are required during object creation.
+
+This prevents creation of incomplete unit instances.
+
+---
+
+## Damage System
+
+Implemented a random damage generation system.
+
+### Method
+
+`GetDamage()`
+
+### Behavior
+
+Returns a random value within the configured damage range.
+
+---
+
+## Health System
+
+Implemented stack health management.
+
+### Method
+
+`TakeDamage(int damage)`
+
+### Features
+
+* Reduces stack health.
+* Prevents negative health values.
+* Supports death detection.
+
+### Property
+
+`IsAlive`
+
+Returns the current living state of the unit stack based on remaining total health.
+
+---
+
+## Army Stack System
+
+Added support for creature stacks.
+
+### Formula
+
+`TotalHealth = Count × Health`
+
+The system calculates and stores the total health pool for the entire stack.
+
+---
+
+## Battle System
+
+Implemented a reusable battle method.
+
+### Method
+
+`Fight(Unit unit1, Unit unit2)`
+
+### Features
+
+* Round-based combat
+* Random damage calculation
+* Health tracking
+* Death detection
+* Winner determination
+
+---
+
+## Battle Output
+
+Implemented console battle logging.
+
+### Features
+
+* Battle start information
+* Round counter
+* Attack notifications
+* Damage reporting
+* Health updates
+* Death notifications
+* Winner announcement
+
+---
+
+## Current Architecture
+
+```text
+Heroes_of_Might_and_Magic
+│
+├── Program.cs
+│   ├── Main()
+│   └── Fight(Unit unit1, Unit unit2)
+│
+└── Models
+    └── Unit.cs
+```
+
+---
+
+## Planned Improvements
+
+### Combat
+
+* Apply Attack and Defense modifiers.
+* Scale damage by creature count.
+* Track creature losses inside stacks.
+* Implement critical hits and special abilities.
+
+### Units
+
+* Add creature tiers.
+* Add factions.
+* Add movement and initiative.
+
+### Heroes
+
+* Create a Hero class.
+* Add hero skills.
+* Implement hero bonuses affecting units.
+
+### Game Systems
+
+* Army management.
+* Battlefield simulation.
+* Turn-based combat interface.
+* Main menu and game loop.
+
+---
+
+## Status
+
+Current implementation successfully supports:
+
+* Unit creation
+* Stack management
+* Random damage generation
+* Health tracking
+* Death detection
+* Automated combat simulation
+* Winner determination
+
+Project foundation completed.
