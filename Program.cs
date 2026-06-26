@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Heroes_of_Might_and_Magic.Models;
+using Heroes_of_Might_and_Magic.Models.Units.Castle;
+using Heroes_of_Might_and_Magic.Models.Units.Necropolis;
 
 namespace Heroes_of_Might_and_Magic
 {
@@ -12,8 +14,10 @@ namespace Heroes_of_Might_and_Magic
         static void Main(string[] args)
         {
 
-            Unit pikeman = new Unit(name: "Pikeman", count: 10, attack: 4, defense: 5, minDamage: 1, maxDamage: 3, health: 10);
-            Unit skeleton = new Unit(name: "Skeleton", count: 15, attack: 5, defense: 4, minDamage: 1, maxDamage: 3, health: 6);
+            //Unit pikeman = new Unit(name: "Pikeman", count: 10, attack: 4, defense: 5, minDamage: 1, maxDamage: 3, health: 10);
+            //Unit skeleton = new Unit(name: "Skeleton", count: 15, attack: 5, defense: 4, minDamage: 1, maxDamage: 3, health: 6);
+            Unit pikeman = new Pikeman(10);
+            Unit skeleton = new Skeleton(10);
 
             //Console.WriteLine($"{pikeman.Name} | ATK: {pikeman.Attack} | DEF: {pikeman.Defense} | DMG: {pikeman.Damage} | HP: {pikeman.Health}");
             //Console.WriteLine($"{skeleton.Name} | ATK: {skeleton.Attack} | DEF: {skeleton.Defense} | DMG: {skeleton.Damage} | HP: {skeleton.Health}");

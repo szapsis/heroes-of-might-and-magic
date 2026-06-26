@@ -1,5 +1,46 @@
 # Heroes of Might and Magic (Console Edition)
 
+---
+
+## Update
+
+**Date:** 26 June 2026
+
+### Unit Refactoring
+
+The unit system was refactored to use inheritance.
+
+### Changes
+
+* Added separate classes for individual creatures.
+* Introduced a faction-based folder structure.
+* Moved creature statistics from `Program.cs` into dedicated unit classes.
+* Simplified unit creation by instantiating specific creature types.
+
+### Current Structure
+
+```text
+Models
+└── Units
+    ├── Unit.cs
+    ├── Castle
+    │   └── Pikeman.cs
+    └── Necropolis
+        └── Skeleton.cs
+```
+
+### Result
+
+Units are now created as:
+
+```csharp
+Unit pikeman = new Pikeman(10);
+Unit skeleton = new Skeleton(15);
+```
+
+instead of manually specifying all unit statistics.
+
+
 ## Technical Progress Report
 
 **Date:** 24 June 2026
