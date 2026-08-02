@@ -1,0 +1,41 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: heroes-ollama
+    volumes:
+      - ollama-data:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+
+  model-loader:
+    image: ollama/ollama:latest
+    container_name: heroes-model-loader
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        sleep 5
+        ollama pull qwen2.5:1.5b
+    restart: "no"
+
+  game:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: heroes-game
+    depends_on:
+      model-loader:
+        condition: service_completed_successfully
+    environment:
+      OLLAMA_URL: http://ollama:11434/api/generate
+      OLLAMA_MODEL: qwen2.5:1.5b
+    stdin_open: true
+    tty: true
+
+volumes:
+  ollama-data:

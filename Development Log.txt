@@ -1,6 +1,62 @@
 # Heroes of Might and Magic (Console Edition)
 
 ---
+---
+
+## Update
+
+**Date:** 2 August 2026
+
+### AI Integration
+
+Integrated a local Large Language Model (LLM) using Ollama.
+
+### Changes
+
+* Added an `AI` folder to the project.
+* Implemented the `Narrator` class.
+* Connected the game to Ollama through its HTTP API.
+* Added asynchronous communication with the AI model.
+* Implemented a loading animation while waiting for the AI response.
+
+### Battlefield Narration
+
+Before each battle, the game sends information about the participating armies to the AI model.
+
+The model generates a short description of the battlefield, creating a more immersive atmosphere before combat begins.
+
+### Current AI Features
+
+* AI-generated battlefield descriptions.
+* Local execution using Ollama.
+* No internet connection required.
+* Game mechanics remain fully controlled by the C# engine.
+
+### Current Structure
+
+```text
+Heroes_of_Might_and_Magic
+│
+├── AI
+│   └── Narrator.cs
+│
+├── Models
+│   └── Units
+│
+└── Program.cs
+```
+
+### Future AI Features
+
+* Battle narration for each round.
+* Victory summaries.
+* Hero biographies.
+* Random quests.
+* NPC dialogue generation.
+* Artifact descriptions.
+* Dynamic campaign storytelling.
+
+---
 
 ## Update
 
