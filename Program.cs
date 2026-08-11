@@ -33,7 +33,9 @@ namespace Heroes_of_Might_and_Magic
             string description = await descriptionTask;
 
             Console.WriteLine("=== Battlefield ===");
-            Console.WriteLine(description);
+
+            await PrintSlowly(description);
+
             Console.WriteLine();
 
             Fight(pikeman, skeleton);
@@ -84,15 +86,15 @@ namespace Heroes_of_Might_and_Magic
         {
             string[] frames =
             {
-        "🗡️    ",
-        " 🗡️   ",
-        "  🗡️  ",
-        "   🗡️ ",
-        "    🗡️",
-        "   🗡️ ",
-        "  🗡️  ",
-        " 🗡️   "
-    };
+                "🗡️    ",
+                " 🗡️   ",
+                "  🗡️  ",
+                "   🗡️ ",
+                "    🗡️",
+                "   🗡️ ",
+                "  🗡️  ",
+                " 🗡️   "
+            };
 
             int frame = 0;
 
@@ -106,6 +108,20 @@ namespace Heroes_of_Might_and_Magic
             }
 
             Console.Write("\r                              \r");
+        }
+
+        static async Task PrintSlowly(string text)
+        {
+            string[] words = text.Split(' ');
+
+            foreach (string word in words)
+            {
+                Console.Write(word + " ");
+                await Task.Delay(300);
+            }
+
+            Console.WriteLine();
+            await Task.Delay(10000);
         }
     }
 }
